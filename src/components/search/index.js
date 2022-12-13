@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-
+import { useHistory } from 'react-router-dom';
 // import useHistory here.
 
 const Search = () => {
 
-  // get the history object here
+  const history = useHistory();
 
   const searchInputRef = useRef();
 
@@ -14,9 +14,9 @@ const Search = () => {
     const searchQuery = new URLSearchParams({
       name: searchInputRef.current.value
     }).toString();
-
-    // imperatively redirect with history.push()
-  };
+    
+    history.push('/search/?' + searchQuery)
+};
 
   return (
     <form onSubmit={onSearchHandler} className="search-form">
